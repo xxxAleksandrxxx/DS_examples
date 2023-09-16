@@ -1,26 +1,11 @@
 from dash import Dash, dcc, html, Input, Output, callback
-# import matplotlib.pyplot as plt
 import plotly.express as px
 import pandas as pd
 
-# import os
 
-# my_dir = os.getcwd()
-# print(my_dir)
-# print()
-# my_files = os.listdir(my_dir)
-# print(my_files)
-# print(os.getcwd())
-# print()
-# print()
-# with open(my_files[0], 'r') as f:
-#     print(f.readline())
+url = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/Data%20Files/historical_automobile_sales.csv'
+# file = 'data.csv'
 
-# # url = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/Data%20Files/historical_automobile_sales.csv'
-file = 'data.csv'
-# file = 'test.txt'
-# with open(file) as f:
-#     print(f.readline())
 
 df = pd.read_csv(file)
 
@@ -29,7 +14,11 @@ color ='#503D36'
 font_size = 24
 my_font = 'Arial'
 
+
 app = Dash(__name__)
+
+server = app.server
+
 app.layout = html.Div([
     html.H1(
         'Automobile Sales Statistics Dashboard',
