@@ -14,6 +14,10 @@ my_font_s = 24
 # my_font_c = '#503D36'
 
 app = Dash(__name__)
+
+server = app.server  # for deploying on render.com
+
+
 app.layout = html.Div([
     html.H1(
         'SpaceX Launch Records Dashboard',
@@ -131,4 +135,4 @@ def update_scatter_chart(launch_site, payload):
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port='7860', debug=True)
+    app.run(debug=False)
