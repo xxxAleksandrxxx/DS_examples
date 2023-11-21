@@ -94,7 +94,7 @@ def update_pie_chart(launch_site):
                 names='Launch Site',
                 color='Launch Site',
                 title='Distribution of successful launches by launch site',
-            )
+        )
     else:
         pie_data = spacex_df[spacex_df['Launch Site'] == launch_site]['class'].value_counts().reset_index()
         pie_data['class'] = ['success' if cl == 1 else 'fail' for cl in pie_data['class']]
@@ -106,7 +106,7 @@ def update_pie_chart(launch_site):
             color_discrete_map={'fail':'#EF553B', 'success':'#00CC96'},
             category_orders={'class':['success', 'fail']},
             title=f'All launches for location: {launch_site}',
-    )
+        )
     fig.update_layout(
         font_family=my_font
     )
