@@ -100,16 +100,20 @@ def update_pie_chart(launch_site):
         pie_data = spacex_df[spacex_df['Launch Site'] == launch_site]['class'].value_counts().reset_index()
         print('pie_data after filtering')
         print(pie_data)
-        pie_data['class'] = ['success' if cl == 1 else 'fail' for cl in pie_data['class']]
+        # after filtering on render with python 3.7 and pandas 1.3.5 in class column 
+        # we got not the class but counts and the class we are actually looking for is in index column
+        # so we need to change columns used in pie chart
+        # pie_data['class'] = ['success' if cl == 1 else 'fail' for cl in pie_data['class']]  # - original
+        pie_data['index'] = ['success' if cl == 1 else 'fail' for cl in pie_data['index']]
         print('pie_data after reneme')
         print(pie_data)
         fig = px.pie(
             data_frame=pie_data,
-            values='count',  
-            names='class',
-            color='class',
+            values='class',  
+            names='index',
+            color='index',
             color_discrete_map={'fail':'#EF553B', 'success':'#00CC96'},
-            category_orders={'class':['success', 'fail']},
+            category_orders={'index':['success', 'fail']},
             title=f'All launches for location: {launch_site}',
         )
     fig.update_layout(
