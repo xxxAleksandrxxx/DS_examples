@@ -9,7 +9,7 @@ spacex_df = pd.read_csv(url)
 max_payload = spacex_df['Payload Mass (kg)'].max()
 min_payload = spacex_df['Payload Mass (kg)'].min()
 
-my_font = 'verdana' #'Arial' # 'monospace', 'menlo'
+my_font = 'arial'  # 'verdana' 'monospace', 'menlo'
 my_font_s = 24
 # my_font_c = '#503D36'
 
@@ -98,15 +98,11 @@ def update_pie_chart(launch_site):
     else:
         print(f'We are at Pie chart else section. \nThe launch_site is: {launch_site}')
         pie_data = spacex_df[spacex_df['Launch Site'] == launch_site]['class'].value_counts().reset_index()
-        print('pie_data after filtering')
-        print(pie_data)
         # after filtering on render with python 3.7 and pandas 1.3.5 in class column 
         # we got not the class but counts and the class we are actually looking for is in index column
         # so we need to change columns used in pie chart
         # pie_data['class'] = ['success' if cl == 1 else 'fail' for cl in pie_data['class']]  # - original
         pie_data['index'] = ['success' if cl == 1 else 'fail' for cl in pie_data['index']]
-        print('pie_data after reneme')
-        print(pie_data)
         fig = px.pie(
             data_frame=pie_data,
             values='class',  
