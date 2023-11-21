@@ -86,6 +86,7 @@ app.layout = html.Div([
     Input(component_id='site-dropdown', component_property='value')
 )
 def update_pie_chart(launch_site):
+    print(f'We are at Pie chart section. \nThe launch_site is: {launch_site}')
     if launch_site == 'ALL':
         pie_data = spacex_df.groupby('Launch Site')['class'].sum().reset_index()
         fig = px.pie(
