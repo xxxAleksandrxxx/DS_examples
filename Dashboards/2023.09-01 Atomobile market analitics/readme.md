@@ -1,3 +1,5 @@
+It's a final project of [Data Visualization with Python cource by IBM](https://www.coursera.org/learn/python-for-data-visualization#modules)  
+
 ## Task description:
 Create Dashboard with Plotly and Dash
 
